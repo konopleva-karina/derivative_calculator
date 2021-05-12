@@ -2,6 +2,7 @@
 #define ACRONIS_OPERATORS_H
 
 namespace Derivatives {
+<<<<<<< HEAD
     template<class T, class U>
     Add <T, U> operator+(const T &lhs, const U &rhs) {
         return Add<T, U>(lhs, rhs);
@@ -119,6 +120,27 @@ namespace Derivatives {
     ::type operator/(int value, const F &f) {
         return Div<Const, F>(Const(value), f);
     }
+=======
+    template<typename T, typename U>
+    Add<T, U> operator+(const T& lhs, const U& rhs) {
+        return Add(lhs, rhs);
+    }
+
+    template<typename T, typename U>
+    Sub<T, U> operator-(const T& lhs, const U& rhs) {
+        return Sub(lhs, rhs);
+    }
+
+    template<typename T, typename U>
+    Mul<T, U> operator*(const T& lhs, const U& rhs) {
+        return Mul(lhs, rhs);
+    }
+
+    template<typename T, typename U>
+    Div<T, U> operator/(const T& lhs, const U& rhs) {
+        return Div(lhs, rhs);
+    }
+>>>>>>> 7b9294f... task added
 }
 
 #endif //ACRONIS_OPERATORS_H

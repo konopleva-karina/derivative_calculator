@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <fstream>
 #include <ios>
 #include <iostream>
@@ -33,5 +34,23 @@ int main() {
     fout << "\n";
 
     fout << "Утрем нос Стивену Вольфраму!";
+=======
+#include <iostream>
+#include "tokenizer.h"
+#include <fstream>
+#include "derivative_calculator.h"
+#include <ios>
+#include <exception>
+
+int main() {
+    std::ofstream fout("../test_out.txt", std::ios_base::app);
+    if (!fout.is_open()) {
+        std::cout << "Файл не может быть открыт!\n";
+    }
+
+    Derivatives::Const a{3};
+    a.Print(fout);
+
+>>>>>>> 7b9294f... task added
     fout.close();
 }

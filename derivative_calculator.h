@@ -1,6 +1,7 @@
 #ifndef ACRONIS_DERIVATIVE_CALCULATOR_H
 #define ACRONIS_DERIVATIVE_CALCULATOR_H
 
+<<<<<<< HEAD
 #include <functional>
 #include "types.h"
 #include "functions.h"
@@ -25,11 +26,18 @@ namespace Derivatives {
 
         void Print(std::ofstream& fd) const {
             fd << 0;
+=======
+namespace Derivatives {
+    template<typename Func>
+    struct DerivativesCalculator {
+        DerivativesCalculator(const Func& func, double increment) : func(func), increment(increment){
+>>>>>>> 7b9294f... task added
         }
 
         Func func;
         double increment;
     };
+<<<<<<< HEAD
 
     template<>
     struct DerivativesCalculator<Const> {
@@ -552,6 +560,8 @@ namespace Derivatives {
         F arg;
         DerivativesCalculator<F> df;
     };
+=======
+>>>>>>> 7b9294f... task added
 }
 
 #endif //ACRONIS_DERIVATIVE_CALCULATOR_H

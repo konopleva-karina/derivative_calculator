@@ -2,6 +2,10 @@
 #define ACRONIS_FUNCTIONS_H
 
 #include <cmath>
+<<<<<<< HEAD
+=======
+#include <iostream>
+>>>>>>> 7b9294f... task added
 #include <fstream>
 #include "types.h"
 
@@ -18,6 +22,7 @@ namespace Derivatives {
         T lhs;
         U rhs;
 
+<<<<<<< HEAD
         void Print(std::ofstream& fd) const {
             fd << "(";
             lhs.Print(fd);
@@ -25,6 +30,9 @@ namespace Derivatives {
             rhs.Print(fd);
             fd << ")";
         }
+=======
+        friend std::ofstream& operator<<(std::ofstream&, const Add&);
+>>>>>>> 7b9294f... task added
     };
 
     template<typename T, typename U>
@@ -39,11 +47,15 @@ namespace Derivatives {
         T lhs;
         U rhs;
 
+<<<<<<< HEAD
         void Print(std::ofstream& fd) const {
             lhs.Print(fd);
             fd << " - ";
             rhs.Print(fd);
         }
+=======
+        friend std::ofstream& operator<<(std::ofstream&, const Sub&);
+>>>>>>> 7b9294f... task added
     };
 
     template<typename T, typename U>
@@ -58,6 +70,7 @@ namespace Derivatives {
         T lhs;
         U rhs;
 
+<<<<<<< HEAD
         void Print(std::ofstream& fd) const {
             fd << "(";
             lhs.Print(fd);
@@ -65,6 +78,9 @@ namespace Derivatives {
             rhs.Print(fd);
             fd << ")";
         }
+=======
+        friend std::ofstream& operator<<(std::ofstream&, const Mul&);
+>>>>>>> 7b9294f... task added
     };
 
     template<typename T, typename U>
@@ -79,6 +95,7 @@ namespace Derivatives {
         T lhs;
         U rhs;
 
+<<<<<<< HEAD
         void Print(std::ofstream& fd) const {
             lhs.Print(fd);
             fd << " / ";
@@ -91,10 +108,22 @@ namespace Derivatives {
         typedef Pow<Base> Type;
 
         Pow(const Base& base, double exp) : base(base), exp(exp) {
+=======
+        friend std::ofstream& operator<<(std::ofstream&, const Div&);
+
+    };
+
+    template<typename T, double U>
+    struct Pow {
+        typedef Pow<T, U> Type;
+
+        explicit Pow(const T& base, double exp) : base(base), exp(exp) {
+>>>>>>> 7b9294f... task added
         }
 
         double operator()(double arg) const;
 
+<<<<<<< HEAD
         Base base;
         double exp;
 
@@ -118,6 +147,19 @@ namespace Derivatives {
         typedef Log<Func> Type;
 
         Log(double base, const Func& func) : base(base), func(func) {
+=======
+        T base;
+        double exp;
+
+        friend std::ofstream& operator<<(std::ofstream&, const Pow&);
+    };
+
+    template<double Base, typename Func>
+    struct Log {
+        typedef Log<Base, Func> Type;
+
+        Log(double lhs, const Func& rhs) : base(base), func(func) {
+>>>>>>> 7b9294f... task added
         }
 
         double operator()(double arg) const;
@@ -125,6 +167,7 @@ namespace Derivatives {
         double base;
         Func func;
 
+<<<<<<< HEAD
         void Print(std::ofstream& fd) const {
             fd << "Log_";
             fd << base;
@@ -132,6 +175,9 @@ namespace Derivatives {
             func.Print(fd);
             fd << ")";
         }
+=======
+        friend std::ofstream& operator<<(std::ofstream&, const Log&);
+>>>>>>> 7b9294f... task added
     };
 
     template<typename Func>
@@ -144,11 +190,16 @@ namespace Derivatives {
 
         Func func;
 
+<<<<<<< HEAD
         void Print(std::ofstream& fd) const {
             fd << "sin(";
             func.Print(fd);
             fd << ")";
         }
+=======
+        friend std::ofstream& operator<<(std::ofstream&, const Sin&);
+
+>>>>>>> 7b9294f... task added
     };
 
     template<typename Func>
@@ -161,11 +212,15 @@ namespace Derivatives {
 
         Func func;
 
+<<<<<<< HEAD
         void Print(std::ofstream& fd) const {
             fd << "cos(";
             func.Print(fd);
             fd << ")";
         }
+=======
+        friend std::ofstream& operator<<(std::ofstream&, const Cos&);
+>>>>>>> 7b9294f... task added
     };
 
     template<typename Func>
@@ -178,11 +233,15 @@ namespace Derivatives {
 
         Func func;
 
+<<<<<<< HEAD
         void Print(std::ofstream& fd) const {
             fd << "tg(";
             func.Print(fd);
             fd << ")";
         }
+=======
+        friend std::ofstream& operator<<(std::ofstream&, const Tg&);
+>>>>>>> 7b9294f... task added
     };
 
     template<typename Func>
@@ -195,11 +254,15 @@ namespace Derivatives {
 
         Func func;
 
+<<<<<<< HEAD
         void Print(std::ofstream& fd) const {
             fd << "ctg(";
             func.Print(fd);
             fd << ")";
         }
+=======
+        friend std::ofstream& operator<<(std::ofstream&, const Ctg&);
+>>>>>>> 7b9294f... task added
     };
 }
 
@@ -223,6 +286,7 @@ double Derivatives::Div<T, U>::operator()(double arg) const {
     return lhs(arg) / rhs(arg);
 }
 
+<<<<<<< HEAD
 template<typename Base>
 double Derivatives::Pow<Base>::operator()(double arg) const {
     return pow(base(arg), exp);
@@ -230,6 +294,15 @@ double Derivatives::Pow<Base>::operator()(double arg) const {
 
 template<typename Func>
 double Derivatives::Log<Func>::operator()(double arg) const {
+=======
+template<typename T, double U>
+double Derivatives::Pow<T, U>::operator()(double arg) const {
+    return pow(base(arg), exp);
+}
+
+template<double Base, typename Func>
+double Derivatives::Log<Base, Func>::operator()(double arg) const {
+>>>>>>> 7b9294f... task added
     return 1 / log(base) * log(func(arg));
 }
 
@@ -253,4 +326,62 @@ double Derivatives::Ctg<Func>::operator()(double arg) const {
     return 1 / tan(func(arg));
 }
 
+<<<<<<< HEAD
+=======
+template<typename T, typename U>
+std::ofstream& operator<<(std::ofstream& fd, const Derivatives::Add<T, U>& add) {
+    fd << add.lhs << " + " << add.rhs;
+}
+
+template<typename T, typename U>
+std::ofstream& operator<<(std::ofstream& fd, const Derivatives::Sub<T, U>& sub) {
+    fd << sub.lhs << " - " << sub.rhs;
+}
+
+template<typename T, typename U>
+std::ofstream& operator<<(std::ofstream& fd, const Derivatives::Mul<T, U>& mul) {
+    fd << mul.lhs << " - " << mul.rhs;
+}
+
+template<typename T, typename U>
+std::ofstream& operator<<(std::ofstream& fd, const Derivatives::Div<T, U>& div) {
+    fd << div.lhs << " - " << div.rhs;
+}
+
+
+template<typename T, double U>
+std::ofstream& operator<<(std::ofstream& fd, const Derivatives::Pow<T, U>& pow) {
+    if (pow.exp == 0.5) {
+        fd << "sqrt(" << pow.base << ")";
+    } else {
+        fd << pow.base << "^(" << pow.exp << ")";
+    }
+}
+
+template<double Base, typename Func>
+std::ofstream& operator<<(std::ofstream& fd, const Derivatives::Log<Base, Func>& log) {
+    fd << "Log_" << log.base << "_(" << log.func << ")";
+}
+
+template<typename Func>
+std::ofstream& operator<<(std::ofstream& fd, const Derivatives::Sin<Func>& sin) {
+    fd << "sin(" << sin.func << ")";
+}
+
+template<typename Func>
+std::ofstream& operator<<(std::ofstream& fd, const Derivatives::Cos<Func>& cos) {
+    fd << "cos(" << cos.func << ")";
+}
+
+template<typename Func>
+std::ofstream& operator<<(std::ofstream& fd, const Derivatives::Tg<Func>& tg) {
+    fd << "tg(" << tg.func << ")";
+}
+
+template<typename Func>
+std::ofstream& operator<<(std::ofstream& fd, const Derivatives::Ctg<Func>& ctg) {
+    fd << "ctg(" << ctg.func << ")";
+}
+
+>>>>>>> 7b9294f... task added
 #endif //ACRONIS_FUNCTIONS_H

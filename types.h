@@ -1,8 +1,11 @@
 #ifndef ACRONIS_TYPES_H
 #define ACRONIS_TYPES_H
 
+<<<<<<< HEAD
 #include <fstream>
 
+=======
+>>>>>>> 7b9294f... task added
 namespace Derivatives {
     struct Const {
         typedef Const Type;
@@ -17,6 +20,7 @@ namespace Derivatives {
             return value;
         }
 
+<<<<<<< HEAD
         operator int() const {
             return value;
         }
@@ -35,6 +39,16 @@ namespace Derivatives {
     struct Argument {
         typedef Argument Type;
 
+=======
+        void Print(std::ofstream& fd) const {
+            fd << value;
+        }
+
+        double value;
+    };
+
+    struct Argument {
+>>>>>>> 7b9294f... task added
         double operator() (double value) const {
             return value;
         }
